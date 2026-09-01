@@ -1,0 +1,97 @@
+# How to use Cursor
+
+This folder is the source of truth for a small **Cursor operating system**: how the agent should work on every project. It is not a giant project dump and it does not replace product-specific rules already in a real app.
+
+Live install (this machine — already done if you followed the steps):
+
+- **User Rules** — paste [`user-rules.md`](user-rules.md) once in Cursor Settings
+- **Personal skills** — four skills in `~/.cursor/skills/`
+- **Thermos plugin** — Cursor marketplace, on-review only
+- **Project stub** — [`project-stub/AGENTS.md`](project-stub/AGENTS.md) only when a repo has no identity file
+
+```
+Layer 1  You            User Rules + personal skills + Thermos plugin   every project
+Layer 2  This project   AGENTS.md and/or .cursor/rules / .cursorrules     this repo
+Layer 3  On demand      named skills, Plan mode, Thermos                  this task
+```
+
+Nothing else to install. Do not add Pocock, shadcn/improve, or a skills.sh bundle.
+
+## 1. One-time global install
+
+### User Rules (you paste)
+
+Cursor does not auto-load this file. Open **Cursor Settings → Rules → User Rules**, keep your existing git / PR / browser-verify rules, and **append** the contents of [`user-rules.md`](user-rules.md). If you pasted an older copy, replace **only** the Cursor OS block with the current file.
+
+### Skills
+
+```bash
+chmod +x install-global.sh
+./install-global.sh
+```
+
+Copies only `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`. Cloudflare skills stay.
+
+### Thermos
+
+Installed from the Cursor marketplace (plugin by Cursor). Skills it adds stay off until a review. You do not copy Thermos into repos.
+
+### Edit here, re-copy
+
+Change a skill here, then re-run `./install-global.sh`. Change User Rules here, then re-paste that block in Settings.
+
+## 2. New project
+
+1. Copy [`project-stub/AGENTS.md`](project-stub/AGENTS.md) to the repo root.
+2. Fill every `TODO`. Delete sections that do not apply. Keep it short.
+3. Add 2–5 **product** rules only if this app has locks the agent always gets wrong (example: video playback on iOS). Do not copy another product’s full rule folder into a new app.
+4. New Agent chat. Point at `AGENTS.md`.
+
+Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the four skills or Thermos into the project.
+
+## 3. Existing project (real apps)
+
+Layer 1 already applies when you open the repo. You do **not** install Thermos or skills again there.
+
+**Do not revise** a working `.cursor/rules` set to “make room” for this OS. They stack:
+
+| Layer | Who owns it | Example |
+|---|---|---|
+| Global User Rules + 4 skills + Thermos | This kit / this machine | Verify, plan vs implement, review |
+| Repo rules / `.cursorrules` | That product | Chat UI, video playback, portal split |
+| `AGENTS.md` | Optional index | How to run, how to verify, 5 stack facts |
+
+**Skip filling a stub when identity already exists and is enough:**
+
+- Personal domain repos (finance, calendar) — leave their rules.
+- A product that already has `.cursor/rules` — optional: add a short `AGENTS.md` that **points at** README + `.cursor/rules/README.md`. Do not duplicate those handbooks.
+- A product that already has `.cursorrules` — optional: add `AGENTS.md` for run/verify; **keep** the existing `.cursorrules`.
+
+**How to tell Cursor in that repo:** open a **new** Agent chat there and paste [`existing-project-prompt.md`](existing-project-prompt.md). Do not ask it to install plugins or copy this kit.
+
+## 4. Day to day
+
+- **New Agent chat per task.**
+- **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
+- **Models:** role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Then effort + context only if needed — see `user-rules.md` → Model picker. Two pools (**Cursor Models** vs **Other Models**): check Settings → Plan & Usage.
+- **Grill** vague features (`grill-requirements`). **Architecture** for “where does this live?”
+- **Simplify** after a big generation (`simplify-ai-slop`).
+- **Thermos** only on merge-ready / PR / “review this branch.” One review tool per review chat (do not also fire Bugbot unless you want a second pass).
+- **UI** — click the flow. One screenshot is not done.
+
+## 5. Do not add
+
+- Community skill packs
+- Always-on Plan mode, Thermos, subagents, or loops
+- This kit copied into product repos
+- Rewriting a product’s rules to match the stub
+
+## Files
+
+| Path | Role |
+|---|---|
+| [`user-rules.md`](user-rules.md) | Paste into Cursor User Rules |
+| [`skills/`](skills/) | Source for the four personal skills |
+| [`install-global.sh`](install-global.sh) | Copies those skills to `~/.cursor/skills/` |
+| [`project-stub/AGENTS.md`](project-stub/AGENTS.md) | Thin identity file for a new repo |
+| [`existing-project-prompt.md`](existing-project-prompt.md) | Paste into an existing app’s Agent chat |
