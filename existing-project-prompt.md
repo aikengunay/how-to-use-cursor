@@ -14,6 +14,7 @@ Do this only:
 2. If `AGENTS.md` already exists, only fill gaps. Do not duplicate handbooks that live in `.cursor/rules`.
 3. If this repo already has a solid rules README (always vs glob vs on-request), leave that split as-is.
 4. Note in `AGENTS.md` (one short section): Thermos / thermonuclear only when the human asks for merge-ready or a branch review. `simplify-ai-slop` after a large generation. Do not run Thermos at the end of every task.
+5. If `AGENTS.md` lacks it, add a one-line **Wrapper** pointer: where runbooks, deploy docs, and client-facing verify live (README / `docs/` / `.cursor/rules/README.md`).
 
 Then stop. Show what you added. Do not start a feature, refactor, or review unless asked.
 

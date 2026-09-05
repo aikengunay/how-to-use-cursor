@@ -17,6 +17,7 @@ TODO: install and start commands
 - TODO: test / typecheck / lint command
 - TODO: the one user flow that must still work
 - TODO (if mobile matters): Maestro flow path and command, e.g. `maestro test maestro/flows/`
+- TODO (if UI matters): click path + `@` product design rules if `.cursor/rules` exist
 
 ## Stack facts
 
@@ -35,3 +36,5 @@ TODO: what is true today. Not a roadmap.
 Layer 1 (User Rules, personal skills, Thermos plugin) is already on the machine. Do not install plugins or copy skills into this repo.
 
 Product rules in `.cursor/rules` or `.cursorrules` stay. Thermos only when asked for merge-ready or a branch review.
+
+Client runbooks and deploy docs live in `docs/` or README — not in the OS kit.

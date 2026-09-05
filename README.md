@@ -19,14 +19,24 @@ Nothing else to install. Do not add Pocock, shadcn/improve, or a skills.sh bundl
 
 ### Prose slop vs code slop
 
-Two different skills — do not mix them:
+Three layers — do not mix them:
 
-| Skill | Use on | When |
+| Layer | Tool | Where |
 |---|---|---|
-| `no-ai-slop` | Emails, landing copy, client docs, README prose | After **you** wrote a rough draft; removes AI writing patterns |
-| `simplify-ai-slop` | Generated **code** in the current diff | After a big Agent generation; deletes files/helpers nobody asked for |
+| UI look/behavior | Product `.cursor/rules` (e.g. chat-ui-identity) | `@` rules on UI tasks |
+| Client prose | `no-ai-slop` | After **you** wrote a rough draft |
+| Generated code | `simplify-ai-slop` | After a big Agent generation |
 
 Workflow for client-facing text: human outline first → `/no-ai-slop` → you manually polish the last pass. Do not run `no-ai-slop` on `.cursor/rules`, code comments, or finance/calendar domain rules.
+
+### Client delivery lens
+
+Shadow before automate, ship the smallest slice, wrap what builds trust:
+
+- **Shadow:** Observe one real user path (admin captive login, teacher portal, chat join) before automating.
+- **Minimum useful:** Smallest shippable slice — one flow, one school pilot.
+- **Wrapper:** What creates client trust — runbooks, offline fallback, logs, export, plain-language docs (`no-ai-slop` for client-facing text).
+- **Where it lives:** Wrapper docs and Maestro flows in **product** `AGENTS.md` / `docs/`, not this kit.
 
 ### Mobile QA (product repos, not this kit)
 
@@ -72,7 +82,7 @@ Change a skill here, then re-run `./install-global.sh`. Change User Rules here, 
 3. Add 2–5 **product** rules only if this app has locks the agent always gets wrong (example: video playback on iOS). Do not copy another product’s full rule folder into a new app.
 4. New Agent chat. Point at `AGENTS.md`.
 
-Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the four skills or Thermos into the project.
+Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the five skills or Thermos into the project.
 
 ## 3. Existing project (real apps)
 
@@ -96,6 +106,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 
 ## 4. Day to day
 
+- **Start a task** — copy the first-message template from [`user-rules.md`](user-rules.md) → First message template.
 - **New Agent chat per task.**
 - **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
 - **Models:** role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Then effort + context only if needed — see `user-rules.md` → Model picker. Two pools (**Cursor Models** vs **Other Models**): check Settings → Plan & Usage.
@@ -104,6 +115,10 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 - **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).
 - **Thermos** only on merge-ready / PR / “review this branch.” One review tool per review chat (do not also fire Bugbot unless you want a second pass).
 - **UI** — click the flow. One screenshot is not done.
+
+### Adopt an external repo
+
+Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-external-repo-prompt.md`](adopt-external-repo-prompt.md). Run [SkillSpector](https://github.com/NVIDIA/SkillSpector) before any `npx skills add` or global install.
 
 ## 5. Do not add
 
@@ -121,4 +136,5 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 | [`install-global.sh`](install-global.sh) | Copies OS skills to `~/.cursor/skills/` |
 | [`install-external-skills.sh`](install-external-skills.sh) | SkillSpector scan + re-run `install-global.sh` |
 | [`project-stub/AGENTS.md`](project-stub/AGENTS.md) | Thin identity file for a new repo |
-| [`existing-project-prompt.md`](existing-project-prompt.md) | Paste into an existing app’s Agent chat |
+| [`existing-project-prompt.md`](existing-project-prompt.md) | Paste into an existing app's Agent chat |
+| [`adopt-external-repo-prompt.md`](adopt-external-repo-prompt.md) | Paste when evaluating a GitHub repo or skill pack |

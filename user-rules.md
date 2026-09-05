@@ -28,6 +28,26 @@ The agent does not know if it is correct until something checks the work.
 - If the agent starts exploring files or topics it does not need, stop it and point it at the right ones.
 - If context compaction happens mid-task, start a new chat. Point it at the plan and the relevant files, not the whole transcript.
 
+## First message template
+
+Copy this into a new Agent chat at the start of a task:
+
+```
+## Goal
+One sentence.
+
+## Files
+@ paths only — no whole repo
+
+## Verify
+Command or click path that proves done
+
+## Out of scope
+What not to touch
+```
+
+Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction.
+
 ## Plan vs implement
 
 - Medium or large work: Plan mode first. Catch a bad plan in one page, not in twelve files.
@@ -84,6 +104,8 @@ Included usage resets each **billing cycle**; unused allowance does not roll ove
 Load only what this job needs. Skills hold workflows and taste. MCP is for touching a live system (browser, GitHub, calendar, database). Do not install a pile of community skills or always-on subagents.
 
 Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`.
+
+External GitHub repos → open a dedicated chat with the kit's `adopt-external-repo-prompt.md` before any install.
 
 **Prose vs code slop:** `no-ai-slop` is for human-facing writing after you draft; `simplify-ai-slop` is for generated code bloat. Do not swap them.
 
