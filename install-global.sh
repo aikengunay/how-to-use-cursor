@@ -8,6 +8,7 @@ SKILLS=(
   codebase-architecture
   simplify-ai-slop
   plan-then-implement
+  no-ai-slop
 )
 
 mkdir -p "$DEST"

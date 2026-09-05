@@ -83,7 +83,9 @@ Included usage resets each **billing cycle**; unused allowance does not roll ove
 
 Load only what this job needs. Skills hold workflows and taste. MCP is for touching a live system (browser, GitHub, calendar, database). Do not install a pile of community skills or always-on subagents.
 
-Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`.
+Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`. Optional: `phone-harness` for real-device mobile QA (install via `install-external-skills.sh` in the kit).
+
+**Prose vs code slop:** `no-ai-slop` is for human-facing writing after you draft; `simplify-ai-slop` is for generated code bloat. Do not swap them.
 
 ## Review (on demand only)
 
