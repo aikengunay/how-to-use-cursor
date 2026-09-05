@@ -5,7 +5,7 @@ This folder is the source of truth for a small **Cursor operating system**: how 
 Live install (this machine — already done if you followed the steps):
 
 - **User Rules** — paste [`user-rules.md`](user-rules.md) once in Cursor Settings
-- **Personal skills** — five OS skills + optional phone-harness in `~/.cursor/skills/`
+- **Personal skills** — five OS skills in `~/.cursor/skills/`
 - **Thermos plugin** — Cursor marketplace, on-review only
 - **Project stub** — [`project-stub/AGENTS.md`](project-stub/AGENTS.md) only when a repo has no identity file
 
@@ -28,18 +28,17 @@ Two different skills — do not mix them:
 
 Workflow for client-facing text: human outline first → `/no-ai-slop` → you manually polish the last pass. Do not run `no-ai-slop` on `.cursor/rules`, code comments, or finance/calendar domain rules.
 
-### Mobile QA (phone-harness)
+### Mobile QA (product repos, not this kit)
 
-Optional CLI + skill for **real device** testing when browser MCP is not enough (mobile apps and native apps).
+Repeatable mobile checks belong in **each app repo** — not in this OS kit.
 
-```bash
-chmod +x install-external-skills.sh
-./install-external-skills.sh   # scans + installs no-ai-slop + phone-harness CLI/skill
-```
+| Layer | Tool | Where |
+|---|---|---|
+| Web UI on desktop | Browser MCP | Agent chat |
+| Mobile regression (repeat before ship) | [Maestro](https://maestro.mobile.dev/) CLI (free, local) | `maestro/flows/` in the product repo |
+| How to run | `AGENTS.md` → verify section | That product repo |
 
-Requires macOS Sequoia+ with iPhone Mirroring (Accessibility + Screen Recording for your terminal), or Android with adb. Then `phone-harness --doctor`. SkillSpector flags the phone-harness **repo** as CRITICAL because the CLI intentionally uses `exec()` to run your test scripts — expected for a local automation tool; the `SKILL.md` alone scans clean.
-
-Use phone-harness only when the task needs a real phone. Prefer browser MCP for web flows.
+Do not add Maestro flows here. When a repo gains mobile users, add flows there and document the command in its `AGENTS.md`.
 
 ## 1. One-time global install
 
@@ -56,7 +55,7 @@ chmod +x install-global.sh
 
 Copies `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, and `no-ai-slop`. Cloudflare skills stay.
 
-For **phone-harness** (CLI + skill), run `./install-external-skills.sh` once — it runs SkillSpector first, then installs.
+After updating a vendored skill from upstream, run `./install-external-skills.sh` — SkillSpector scan, then re-copy via `install-global.sh`.
 
 ### Thermos
 
@@ -102,7 +101,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 - **Models:** role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Then effort + context only if needed — see `user-rules.md` → Model picker. Two pools (**Cursor Models** vs **Other Models**): check Settings → Plan & Usage.
 - **Grill** vague features (`grill-requirements`). **Architecture** for “where does this live?”
 - **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`).
-- **Mobile QA** on real devices when browser MCP is not enough (`phone-harness` + `phone-harness --doctor`).
+- **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).
 - **Thermos** only on merge-ready / PR / “review this branch.” One review tool per review chat (do not also fire Bugbot unless you want a second pass).
 - **UI** — click the flow. One screenshot is not done.
 
@@ -120,6 +119,6 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 | [`user-rules.md`](user-rules.md) | Paste into Cursor User Rules |
 | [`skills/`](skills/) | Source for the five OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
 | [`install-global.sh`](install-global.sh) | Copies OS skills to `~/.cursor/skills/` |
-| [`install-external-skills.sh`](install-external-skills.sh) | SkillSpector scan + `no-ai-slop` + phone-harness CLI/skill |
+| [`install-external-skills.sh`](install-external-skills.sh) | SkillSpector scan + re-run `install-global.sh` |
 | [`project-stub/AGENTS.md`](project-stub/AGENTS.md) | Thin identity file for a new repo |
 | [`existing-project-prompt.md`](existing-project-prompt.md) | Paste into an existing app’s Agent chat |

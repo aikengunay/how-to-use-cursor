@@ -4,7 +4,7 @@ Paste this into a **new** Agent chat **in that repo**. Skip personal finance and
 
 ---
 
-You are in an existing product repo. The human already has a Cursor OS on this machine: User Rules, personal skills (`grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`; optional `phone-harness` for real-device mobile QA), and the Thermos plugin. Do not install plugins, skills.sh packs, or copy a how-to-use-cursor folder into this repo.
+You are in an existing product repo. The human already has a Cursor OS on this machine: User Rules, personal skills (`grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`), and the Thermos plugin. Mobile regression tests (Maestro) belong in this repo if it has mobile users — not in the OS kit. Do not install plugins, skills.sh packs, or copy a how-to-use-cursor folder into this repo.
 
 **Keep every existing `.cursor/rules`, `.cursorrules`, and project skill.** Do not rewrite, merge, or delete them to “adopt the OS.” Product locks stay (UI identity, HLS/iOS, Docker, portal split, etc.). Global OS rules already apply on top.
 

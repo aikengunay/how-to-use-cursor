@@ -16,6 +16,7 @@ TODO: install and start commands
 
 - TODO: test / typecheck / lint command
 - TODO: the one user flow that must still work
+- TODO (if mobile matters): Maestro flow path and command, e.g. `maestro test maestro/flows/`
 
 ## Stack facts
 
