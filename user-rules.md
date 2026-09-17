@@ -46,7 +46,7 @@ Command or click path that proves done
 What not to touch
 ```
 
-Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction.
+Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction. Cost mode (opt-in): paste `deepseek-worker-prompt.md` — do not treat that as the daily default.
 
 ## Plan vs implement
 
@@ -62,6 +62,7 @@ Pick by **job**, not by SKU. Menu labels change; these roles do not. Choose **ro
 | --- | --- | --- |
 | Plan / design | Thinking model or **Plan mode** | Either — your taste |
 | Implement approved plan | **Composer + Fast on** | **Cursor Models** |
+| Bulk implement (cost mode, opt-in) | **DeepSeek MCP** via `deepseek-worker` skill; Cursor applies + verifies | DeepSeek top-up + Cursor Models |
 | Stuck on protocol / hub / state | **Grok High + Fast off** (new chat) | Cursor Models |
 | Deliberate non-Cursor work | Claude / GPT — only when you choose it on purpose | **Other Models** |
 
@@ -73,6 +74,7 @@ Pick by **job**, not by SKU. Menu labels change; these roles do not. Choose **ro
 | --- | --- | --- | --- |
 | Plan | off / N/A | **High** (or model thinking mode) | default |
 | Implement | **Composer: on** | Medium or default | default (~300k) |
+| Bulk implement (cost mode) | Composer Standard for glue · **Fast off on subagents** | Medium or default | default |
 | Debug (Grok) | **off** | High OK for one chat | default |
 | Tiny fix (no plan) | Composer: either | Low or default | default |
 
@@ -101,9 +103,9 @@ Included usage resets each **billing cycle**; unused allowance does not roll ove
 
 ## Skills and MCP
 
-Load only what this job needs. Skills hold workflows and taste. MCP is for touching a live system (browser, GitHub, calendar, database). Do not install a pile of community skills or always-on subagents.
+Load only what this job needs. Skills hold workflows and taste. MCP is for touching a live system (browser, GitHub, calendar, database, optional DeepSeek codegen worker). Do not install a pile of community skills or always-on subagents.
 
-Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`.
+Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`, `deepseek-worker`. DeepSeek MCP = optional cheap codegen worker; load on demand — paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) in the kit (not this file) for start + closing cost report with timestamps. Not default for every task.
 
 External GitHub repos → open a dedicated chat with the kit's `adopt-external-repo-prompt.md` before any install.
 

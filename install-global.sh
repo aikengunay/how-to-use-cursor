@@ -9,6 +9,7 @@ SKILLS=(
   simplify-ai-slop
   plan-then-implement
   no-ai-slop
+  deepseek-worker
 )
 
 mkdir -p "$DEST"

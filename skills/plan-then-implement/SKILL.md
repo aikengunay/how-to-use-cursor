@@ -53,7 +53,7 @@ The plan must be specific enough that a faster model cannot invent a new archite
 
 ### Which model (Cursor picker)
 
-Default implement: **Composer + Fast on**, effort **Medium/default**, context **default**. See `user-rules.md` → Model picker for full role + toggle guidance.
+Default implement: **Composer + Fast on**, effort **Medium/default**, context **default**. See `user-rules.md` → Model picker for full role + toggle guidance. If the human opts into cost mode for the implement phase, load `deepseek-worker` instead of Composer-only generation.
 
 | Situation | Model · Fast · effort |
 | --- | --- |

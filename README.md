@@ -5,17 +5,17 @@ This folder is the source of truth for a small **Cursor operating system**: how 
 Live install (this machine — already done if you followed the steps):
 
 - **User Rules** — paste [`user-rules.md`](user-rules.md) once in Cursor Settings
-- **Personal skills** — five OS skills in `~/.cursor/skills/`
+- **Personal skills** — six OS skills in `~/.cursor/skills/`
 - **Thermos plugin** — Cursor marketplace, on-review only
 - **Project stub** — [`project-stub/AGENTS.md`](project-stub/AGENTS.md) only when a repo has no identity file
 
 ```
 Layer 1  You            User Rules + personal skills + Thermos plugin   every project
 Layer 2  This project   AGENTS.md and/or .cursor/rules / .cursorrules     this repo
-Layer 3  On demand      named skills, Plan mode, Thermos                  this task
+Layer 3  On demand      named skills, Plan mode, Thermos, deepseek-worker   this task
 ```
 
-Nothing else to install. Do not add Pocock, shadcn/improve, or a skills.sh bundle. **Scan** any other GitHub skill with [SkillSpector](https://github.com/NVIDIA/SkillSpector) before installing.
+Nothing else to install for the default OS. Optional DeepSeek worker is extra — see below. Do not add Pocock, shadcn/improve, or a skills.sh bundle. **Scan** any other GitHub skill with [SkillSpector](https://github.com/NVIDIA/SkillSpector) before installing.
 
 ### Prose slop vs code slop
 
@@ -37,6 +37,7 @@ Shadow before automate, ship the smallest slice, wrap what builds trust:
 - **Minimum useful:** Smallest shippable slice — one flow, one school pilot.
 - **Wrapper:** What creates client trust — runbooks, offline fallback, logs, export, plain-language docs (`no-ai-slop` for client-facing text).
 - **Where it lives:** Wrapper docs and Maestro flows in **product** `AGENTS.md` / `docs/`, not this kit.
+- **External worker:** default **no** on personal finance, calendar, and client product repos. Composer only unless the human enables DeepSeek.
 
 ### Mobile QA (product repos, not this kit)
 
@@ -63,9 +64,13 @@ chmod +x install-global.sh
 ./install-global.sh
 ```
 
-Copies `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, and `no-ai-slop`. Cloudflare skills stay.
+Copies `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`, and `deepseek-worker`. Cloudflare skills stay.
 
 After updating a vendored skill from upstream, run `./install-external-skills.sh` — SkillSpector scan, then re-copy via `install-global.sh`.
+
+### Optional: DeepSeek worker
+
+Cost mode, **opt-in per task**. Fresh machine or this Mac: [`deepseek-worker-setup.md`](deepseek-worker-setup.md). Daily prompt: [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md).
 
 ### Thermos
 
@@ -82,7 +87,7 @@ Change a skill here, then re-run `./install-global.sh`. Change User Rules here, 
 3. Add 2–5 **product** rules only if this app has locks the agent always gets wrong (example: video playback on iOS). Do not copy another product’s full rule folder into a new app.
 4. New Agent chat. Point at `AGENTS.md`.
 
-Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the five skills or Thermos into the project.
+Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the six skills or Thermos into the project.
 
 ## 3. Existing project (real apps)
 
@@ -92,7 +97,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 
 | Layer | Who owns it | Example |
 |---|---|---|
-| Global User Rules + 5 skills + Thermos | This kit / this machine | Verify, plan vs implement, review, prose/code slop |
+| Global User Rules + 6 skills + Thermos | This kit / this machine | Verify, plan vs implement, review, prose/code slop, optional DeepSeek worker |
 | Repo rules / `.cursorrules` | That product | Chat UI, video playback, portal split |
 | `AGENTS.md` | Optional index | How to run, how to verify, 5 stack facts |
 
@@ -109,7 +114,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 - **Start a task** — copy the first-message template from [`user-rules.md`](user-rules.md) → First message template.
 - **New Agent chat per task.**
 - **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
-- **Models:** role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Then effort + context only if needed — see `user-rules.md` → Model picker. Two pools (**Cursor Models** vs **Other Models**): check Settings → Plan & Usage.
+- **Models:** role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Bulk implement (cost mode, opt-in) → paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Then effort + context only if needed — see `user-rules.md` → Model picker. Two pools (**Cursor Models** vs **Other Models**): check Settings → Plan & Usage.
 - **Grill** vague features (`grill-requirements`). **Architecture** for “where does this live?”
 - **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`).
 - **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).
@@ -132,7 +137,11 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 | Path | Role |
 |---|---|
 | [`user-rules.md`](user-rules.md) | Paste into Cursor User Rules |
-| [`skills/`](skills/) | Source for the five OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
+| [`skills/`](skills/) | Source for the six OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
+| [`deepseek-worker-setup.md`](deepseek-worker-setup.md) | Fresh-machine + MCP setup for optional DeepSeek worker |
+| [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) | Cost-mode start prompt + session cost report |
+| [`deepseek-mcp-server/`](deepseek-mcp-server/) | MCP server source (`install.sh` → `~/.cursor/deepseek-mcp-server`) |
+| [`skills/deepseek-worker/`](skills/deepseek-worker/) | On-demand cost-mode routing skill |
 | [`install-global.sh`](install-global.sh) | Copies OS skills to `~/.cursor/skills/` |
 | [`install-external-skills.sh`](install-external-skills.sh) | SkillSpector scan + re-run `install-global.sh` |
 | [`project-stub/AGENTS.md`](project-stub/AGENTS.md) | Thin identity file for a new repo |

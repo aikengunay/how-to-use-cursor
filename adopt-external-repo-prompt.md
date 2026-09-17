@@ -4,7 +4,7 @@ Paste this into a **new** Agent chat when evaluating a GitHub repo (skill pack, 
 
 ---
 
-You are helping decide whether to adopt an external GitHub repo into this machine's Cursor OS or a product repo. The human already has User Rules, five OS skills, and Thermos. Do not install anything until you finish this workflow and the human approves.
+You are helping decide whether to adopt an external GitHub repo into this machine's Cursor OS or a product repo. The human already has User Rules, six OS skills, and Thermos. Do not install anything until you finish this workflow and the human approves.
 
 **Gate — SkillSpector first**
 
