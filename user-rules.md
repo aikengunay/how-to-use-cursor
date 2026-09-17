@@ -56,6 +56,8 @@ Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat
 
 ### Model picker (roles first, then toggles)
 
+Full decision flow + orchestrator vs worker: [`model-routing.md`](model-routing.md).
+
 Pick by **job**, not by SKU. Menu labels change; these roles do not. Choose **role → defaults below**; touch toggles only when the job needs it.
 
 | Job | Model | Pool |

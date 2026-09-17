@@ -11,7 +11,7 @@ description: >-
 
 Cursor plans, applies patches, and verifies. DeepSeek generates via MCP. Default implement stays Composer unless the human opts in.
 
-Setup: [`deepseek-worker-setup.md`](../../deepseek-worker-setup.md). Prompts and cost report: [`deepseek-worker-prompt.md`](../../deepseek-worker-prompt.md).
+Setup: [`deepseek-worker-setup.md`](../../deepseek-worker-setup.md). Prompts and cost report: [`deepseek-worker-prompt.md`](../../deepseek-worker-prompt.md). Orchestrator vs worker: [`model-routing.md`](../../model-routing.md).
 
 ## When to use
 

@@ -114,7 +114,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 - **Start a task** — copy the first-message template from [`user-rules.md`](user-rules.md) → First message template.
 - **New Agent chat per task.**
 - **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
-- **Models:** role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Bulk implement (cost mode, opt-in) → paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Then effort + context only if needed — see `user-rules.md` → Model picker. Two pools (**Cursor Models** vs **Other Models**): check Settings → Plan & Usage.
+- **Models:** [`model-routing.md`](model-routing.md) — when Composer vs DeepSeek vs Grok vs Claude; role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Bulk implement (cost mode, opt-in) → paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Toggles + pools → `user-rules.md` → Model picker.
 - **Grill** vague features (`grill-requirements`). **Architecture** for “where does this live?”
 - **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`).
 - **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).
@@ -137,6 +137,7 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 | Path | Role |
 |---|---|
 | [`user-rules.md`](user-rules.md) | Paste into Cursor User Rules |
+| [`model-routing.md`](model-routing.md) | When to use Composer vs DeepSeek vs Grok vs Other models |
 | [`skills/`](skills/) | Source for the six OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
 | [`deepseek-worker-setup.md`](deepseek-worker-setup.md) | Fresh-machine + MCP setup for optional DeepSeek worker |
 | [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) | Cost-mode start prompt + session cost report |
