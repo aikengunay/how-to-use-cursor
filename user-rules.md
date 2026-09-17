@@ -105,7 +105,7 @@ Included usage resets each **billing cycle**; unused allowance does not roll ove
 
 Load only what this job needs. Skills hold workflows and taste. MCP is for touching a live system (browser, GitHub, calendar, database, optional DeepSeek codegen worker). Do not install a pile of community skills or always-on subagents.
 
-Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`, `deepseek-worker`. DeepSeek MCP = optional cheap codegen worker; load on demand — paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) in the kit (not this file) for start + closing cost report with timestamps. Not default for every task.
+Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`, `deepseek-worker`. DeepSeek MCP = optional cheap codegen worker; load on demand — paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) in the kit (not this file) for start + closing cost report. Report rule: DeepSeek $ from MCP footers only; Cursor tokens from dashboard (human confirms); never claim "saved $X" on Included Pro. Not default for every task.
 
 External GitHub repos → open a dedicated chat with the kit's `adopt-external-repo-prompt.md` before any install.
 

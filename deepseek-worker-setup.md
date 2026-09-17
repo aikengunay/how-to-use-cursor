@@ -58,6 +58,27 @@ If `verify-mcp.sh` passes but Cursor fails: MCP → Restart, then Reload Window.
 
 Each reply appends `— model: …; tokens in/out: …/…`
 
+## DeepSeek cost math (accurate from footers)
+
+Use MCP footer token counts only. Rates are **off-peak, cache-miss input** — check [DeepSeek pricing](https://api-docs.deepseek.com/quick_start/pricing) before disputing a cent.
+
+| Model (footer) | Input $/1M | Output $/1M |
+| --- | ---: | ---: |
+| `deepseek-flash` | 0.15 | 0.60 |
+| `deepseek-v4-pro` | 0.66 | 1.98 |
+
+Formula:
+
+```text
+cost = (tokens_in / 1_000_000 × input_rate) + (tokens_out / 1_000_000 × output_rate)
+```
+
+Example: `deepseek_code` · 118 in / 945 out · v4-pro → `(118×0.66 + 945×1.98) / 1e6` ≈ **$0.00195**
+
+Peak hours double these rates. The platform bill is the source of truth; this is for session monitoring.
+
+**Cursor orchestrator:** token counts come from [cursor.com/dashboard/usage](https://cursor.com/dashboard/usage) in the session window — the agent cannot read this. On Pro, rows are usually **Included**, not dollars. Do not treat Included tokens as "money saved."
+
 ## Dual meter
 
 Worker ~1k tokens/task (DeepSeek top-up). Orchestrator ~100k–500k/turn (Cursor pool). Top-up does not replace Ultra.

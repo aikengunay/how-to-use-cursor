@@ -49,6 +49,25 @@ No opt-in → no banner → Composer only.
 5. Run verify from the plan
 6. Closing report from [`deepseek-worker-prompt.md`](../../deepseek-worker-prompt.md)
 
+### Session cost report rules
+
+**Always accurate (agent must fill):**
+- Start/end timestamps
+- Every MCP call: tool, model, tokens in/out from footers (never guess)
+- DeepSeek $: formula in [`deepseek-worker-setup.md`](../../deepseek-worker-setup.md) using footer model + rates
+- Routing yes/no: banner, deepseek_code before Write, fallback used
+
+**Human confirms (leave blanks or ask):**
+- Cursor token sum from dashboard for the window
+- DeepSeek platform spike yes/no
+- Included vs on-demand on Cursor bill
+
+**Never claim without human data:**
+- "You saved $X" on Included Pro
+- Cursor $ total (no billing API)
+
+Optional one line, labeled **reference only**: public list-rate math for Composer tokens if human pasted a token sum — not invoice, not savings.
+
 Pass only the task + 1–3 file snippets. Reviews: `deepseek_analyze`.
 
 Weak output (not infra errors): retry once with `deepseek_chat` + `thinking: true`. MCP errors: restart MCP, then Composer once.
