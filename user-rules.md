@@ -36,6 +36,9 @@ Copy this into a new Agent chat at the start of a task:
 ## Goal
 One sentence.
 
+## Model
+Composer 2.5 · Fast On · Cursor Models · DeepSeek: no
+
 ## Files
 @ paths only — no whole repo
 
@@ -45,6 +48,8 @@ Command or click path that proves done
 ## Out of scope
 What not to touch
 ```
+
+Phased work: copy the **First messages** block from the approved `.cursor/plans/*_detailed.plan.md` (includes per-chat Model). Skip `## Model` on tiny one-off chats if the picker is already set. Full picker labels + when to use DeepSeek: `plan-then-implement` skill.
 
 Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction. Cost mode (opt-in): paste `deepseek-worker-prompt.md` — do not treat that as the daily default.
 

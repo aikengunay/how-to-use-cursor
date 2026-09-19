@@ -44,6 +44,39 @@ One sentence.
 
 The plan must be specific enough that a faster model cannot invent a new architecture while implementing.
 
+### Detailed plans — First messages + Model
+
+Medium or large work that splits into implement chats (Phase 1 Chat A…E style) should end the `.cursor/plans/*_detailed.plan.md` with **First messages** — one fenced block per chat, ready to copy. Do **not** put model names in product `AGENTS.md`. Slice overrides live in the plan.
+
+Each chat heading **and** each paste block includes a **`## Model`** section using **picker labels** (not SKU metaphors):
+
+```markdown
+## Model
+- Mode: Agent
+- Pool: Cursor Models
+- Model: Composer 2.5
+- Fast: On
+- Effort: Medium (default)
+- Context: Default
+- DeepSeek worker: No
+```
+
+Plan-mode chats use Mode: Plan, Effort: High, Fast: Off. Name the thinking model the human already picked (e.g. Claude Fable 5.1).
+
+**Defaults by slice (override only when the job needs it):**
+
+| Slice | Model · Fast · Effort | DeepSeek worker |
+| --- | --- | --- |
+| Implement A…N (wiring, pages, deploy) | Composer 2.5 · **On** · Medium | **No** |
+| Bulk new files / SCSS+config blobs (cost mode) | Composer 2.5 · On · Medium (orchestrate) | **Optional** — name exact files |
+| Player / timing / protocol | Composer 2.5 · On · Medium | **No** |
+| Stuck twice on protocol | New chat → Grok 4.6 High · **Off** · High | No |
+| Plan / design (once) | Thinking model · Off · High · Plan mode | No |
+
+Claude / GPT implement only when the human chose Other Models on purpose. Escalation line for every implement chat: `If blocked twice on timing/protocol: new chat → Grok 4.6 High, Fast Off`.
+
+Do not create a second “prompts only” file unless the human asks. The detailed plan is the single copy-paste source.
+
 ## Implement (Composer / Grok after approval)
 
 - Follow the plan. Do not reopen design.
