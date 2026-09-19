@@ -111,7 +111,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 
 ## 4. Day to day
 
-- **Start a task** — [`user-rules.md`](user-rules.md) → First message template. Phased work: set picker from **Model (do not paste)** in the detailed plan, then paste the fenced Goal/Files/Verify block only.
+- **Start a task** — [`user-rules.md`](user-rules.md) → First message template. Phased work: set picker from **Model (do not paste)**, paste Goal/Files/Verify/**Closeout**/Out of scope; agent marks slice todos done before stopping. After final gate: optional Thermos — plan **After final gate** section.
 - **New Agent chat per task.**
 - **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
 - **Models:** [`model-routing.md`](model-routing.md) — when Composer vs DeepSeek vs Grok vs Claude; role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Per-slice overrides live in the plan’s **Model (do not paste)** bullets — not in product `AGENTS.md`. Bulk implement (cost mode, opt-in) → paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Toggles + pools → `user-rules.md` → Model picker. Detailed-plan template: [`skills/plan-then-implement/SKILL.md`](skills/plan-then-implement/SKILL.md).

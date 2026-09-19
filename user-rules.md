@@ -42,11 +42,14 @@ One sentence.
 ## Verify
 Command or click path that proves done
 
+## Closeout
+Mark plan frontmatter todos completed for this slice (IDs listed in detailed plan)
+
 ## Out of scope
 What not to touch
 ```
 
-**Phased work:** open the approved `.cursor/plans/*_detailed.plan.md` → **First messages**. Per chat: (1) set picker from the **Model (you — do not paste)** bullets; (2) copy the fenced block (Goal / Files / Verify / Out of scope only). Full picker labels + defaults: `plan-then-implement` skill.
+**Phased work:** open the approved `.cursor/plans/*_detailed.plan.md` → **First messages**. Per chat: (1) set picker from **Model (do not paste)**; (2) paste the fenced block (Goal / Files / Verify / **Closeout** / Out of scope). Agent must mark slice todos `completed` before stopping. After the **final gate only**: optional Thermos / `simplify-ai-slop` — see plan **After final gate** (human-only). Full template: `plan-then-implement` skill.
 
 Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction. Cost mode (opt-in): paste `deepseek-worker-prompt.md` — do not treat that as the daily default.
 

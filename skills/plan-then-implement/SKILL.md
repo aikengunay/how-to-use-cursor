@@ -51,7 +51,8 @@ Medium or large work that splits into implement chats (Phase 1 Chat A…E style)
 **Two parts per chat — do not merge:**
 
 1. **Model (human only)** — bullet list **above** the fence. The operator sets the Cursor picker from this; **do not paste Model into the chat** (the agent cannot read the picker from your message).
-2. **Paste into chat** — one fenced block with only `## Goal`, `## Files`, `## Verify`, `## Out of scope`.
+2. **Paste into chat** — one fenced block with `## Goal`, `## Files`, `## Verify`, `## Closeout`, `## Out of scope`.
+3. **After final gate (human only)** — one section at the end of the plan for optional reviews/skills — not pasted into implement chats.
 
 Model block uses **picker labels** (not SKU metaphors):
 
@@ -82,11 +83,49 @@ Claude / GPT implement only when the human chose Other Models on purpose. Escala
 
 Do not create a second “prompts only” file unless the human asks. The detailed plan is the single copy-paste source.
 
+**Closeout line in every paste block** — list the exact todo IDs for that slice (work items + gate), e.g.:
+
+```markdown
+## Closeout
+Mark `status: completed` in the plan frontmatter for: `p2a-config`, `p2a-env`, … `gate-2a`. Required before you stop — do not mark the next slice's todos.
+```
+
+### Detailed plans — Todo closeout (required)
+
+Plans with YAML frontmatter todos (`id` + `status`) are the slice tracker. **Every implement chat must end with todo updates** — agents often skip this unless the paste block says so.
+
+1. Run verify for this slice only.
+2. Edit `.cursor/plans/*_detailed.plan.md` frontmatter: set `status: completed` on **every todo ID for this slice** (sub-phase items + gate). Do not mark the next slice early.
+3. Tell the human which IDs were marked done and that the next chat can start.
+
+If verify fails, leave todos pending and say what blocked the gate.
+
+### Detailed plans — After final gate (human only)
+
+End every detailed plan with this section. **Do not paste into implement chats.** Gates between slices are enough; branch reviews run once at the end.
+
+```markdown
+## After final gate
+
+Human-only — do not paste into implement chats.
+
+| When | Action |
+| --- | --- |
+| After last gate passes | Optional `simplify-ai-slop` if any slice felt bloated |
+| Branch merge-ready / ship | Optional Thermos (both tracks) — **one** review chat |
+| Human-facing copy you wrote | Optional `no-ai-slop` on your draft |
+| Do not | Thermos, Bugbot, or Security Review between slices (mid-feature) |
+| Do not | Stack Thermos + Bugbot + Security on the same diff unless the human asks |
+
+Product `.cursor/rules` apply automatically — no plan line needed.
+```
+
 ## Implement (Composer / Grok after approval)
 
 - Follow the plan. Do not reopen design.
 - Smallest diff. No extra files.
 - Run the verify path before claiming done.
+- **Mark this slice's plan todos `completed` in frontmatter before you stop** (see Closeout in the paste block).
 - If the plan is wrong, stop and say so. Do not silently expand scope.
 
 ### Which model (Cursor picker)
