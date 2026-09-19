@@ -96,9 +96,26 @@ Plans with YAML frontmatter todos (`id` + `status`) are the slice tracker. **Eve
 
 1. Run verify for this slice only.
 2. Edit `.cursor/plans/*_detailed.plan.md` frontmatter: set `status: completed` on **every todo ID for this slice** (sub-phase items + gate). Do not mark the next slice early.
-3. Tell the human which IDs were marked done and that the next chat can start.
+3. **Final slice only:** if the repo has `docs/roadmap.md`, tick the phase row (`Status` → `Done (YYYY-MM-DD)`) named in the product plan's `Roadmap row:` line. Intermediate slices do not tick the roadmap.
+4. Tell the human which IDs were marked done and that the next chat can start.
 
 If verify fails, leave todos pending and say what blocked the gate.
+
+**Product plan header** (every `docs/*-plan.md` for a phased feature):
+
+```markdown
+**Roadmap row:** `polish`
+```
+
+**Final-slice Closeout example** (append to plan todo lines):
+
+```markdown
+## Closeout
+Mark `status: completed` in the plan frontmatter for: `p2d-deploy`, … `gate-2d`, `p2e-closeout`.
+Tick roadmap row `p2` in `docs/roadmap.md` (Status → Done with date). Required before you stop.
+```
+
+Multi-phase products should keep `docs/roadmap.md` in the repo as the order tracker.
 
 ### Detailed plans — After final gate (human only)
 

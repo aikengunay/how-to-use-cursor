@@ -37,7 +37,7 @@ Layer 1 (User Rules, personal skills, Thermos plugin) is already on the machine.
 
 Product rules in `.cursor/rules` or `.cursorrules` stay. Thermos only when asked for merge-ready or a branch review.
 
-Client runbooks and deploy docs live in `docs/` or README — not in the OS kit. Model names belong in the approved task plan’s **Model (human only)** bullets above each paste block, not in this file.
+Client runbooks and deploy docs live in `docs/` or README — not in the OS kit. Multi-phase products: keep `docs/roadmap.md` as the phase-order tracker; final implement chat Closeout ticks the row. Model names belong in task plans, not in this file.
 
 ## External worker (optional)
 
