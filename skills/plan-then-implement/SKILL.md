@@ -46,12 +46,17 @@ The plan must be specific enough that a faster model cannot invent a new archite
 
 ### Detailed plans — First messages + Model
 
-Medium or large work that splits into implement chats (Phase 1 Chat A…E style) should end the `.cursor/plans/*_detailed.plan.md` with **First messages** — one fenced block per chat, ready to copy. Do **not** put model names in product `AGENTS.md`. Slice overrides live in the plan.
+Medium or large work that splits into implement chats (Phase 1 Chat A…E style) should end the `.cursor/plans/*_detailed.plan.md` with **First messages** — one section per chat. Do **not** put model names in product `AGENTS.md`. Slice overrides live in the plan.
 
-Each chat heading **and** each paste block includes a **`## Model`** section using **picker labels** (not SKU metaphors):
+**Two parts per chat — do not merge:**
 
-```markdown
-## Model
+1. **Model (human only)** — bullet list **above** the fence. The operator sets the Cursor picker from this; **do not paste Model into the chat** (the agent cannot read the picker from your message).
+2. **Paste into chat** — one fenced block with only `## Goal`, `## Files`, `## Verify`, `## Out of scope`.
+
+Model block uses **picker labels** (not SKU metaphors):
+
+```
+Model (you — set picker; do not paste):
 - Mode: Agent
 - Pool: Cursor Models
 - Model: Composer 2.5

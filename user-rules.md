@@ -30,14 +30,11 @@ The agent does not know if it is correct until something checks the work.
 
 ## First message template
 
-Copy this into a new Agent chat at the start of a task:
+**One-off tasks:** set the picker first (default implement: Composer 2.5 · Fast On · Cursor Models). Then paste **only** this into a new Agent chat:
 
 ```
 ## Goal
 One sentence.
-
-## Model
-Composer 2.5 · Fast On · Cursor Models · DeepSeek: no
 
 ## Files
 @ paths only — no whole repo
@@ -49,7 +46,7 @@ Command or click path that proves done
 What not to touch
 ```
 
-Phased work: copy the **First messages** block from the approved `.cursor/plans/*_detailed.plan.md` (includes per-chat Model). Skip `## Model` on tiny one-off chats if the picker is already set. Full picker labels + when to use DeepSeek: `plan-then-implement` skill.
+**Phased work:** open the approved `.cursor/plans/*_detailed.plan.md` → **First messages**. Per chat: (1) set picker from the **Model (you — do not paste)** bullets; (2) copy the fenced block (Goal / Files / Verify / Out of scope only). Full picker labels + defaults: `plan-then-implement` skill.
 
 Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction. Cost mode (opt-in): paste `deepseek-worker-prompt.md` — do not treat that as the daily default.
 
