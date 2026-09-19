@@ -30,7 +30,16 @@ The agent does not know if it is correct until something checks the work.
 
 ## First message template
 
-**One-off tasks:** set the picker first (default implement: Composer 2.5 · Fast On · Cursor Models). Then paste **only** this into a new Agent chat:
+**Where rules live (do not duplicate):**
+
+| Layer | File | Holds |
+| --- | --- | --- |
+| Daily habits | This file | Philosophy, one-off template, session hygiene, review when |
+| Phased implement | `plan-then-implement` skill | First messages, Model, Closeout, roadmap tick, After final gate |
+| Model choice | `model-routing.md` | Composer vs Grok vs DeepSeek |
+| Product | `AGENTS.md`, `docs/roadmap.md` | Run, verify, phase status — not model SKUs |
+
+**One-off tasks:** set the picker first (default implement: Composer 2.5 · Fast On · Cursor Models). Paste **only** this:
 
 ```
 ## Goal
@@ -42,14 +51,11 @@ One sentence.
 ## Verify
 Command or click path that proves done
 
-## Closeout
-Mark plan frontmatter todos completed for this slice (IDs listed in detailed plan)
-
 ## Out of scope
 What not to touch
 ```
 
-**Phased work:** `@docs/roadmap.md` for order (if the repo has it). Open `.cursor/plans/*_detailed.plan.md` → **First messages**. Per chat: (1) set picker from **Model (do not paste)**; (2) paste the fenced block (Goal / Files / Verify / **Closeout** / Out of scope). Agent marks slice todos `completed` before stopping; **final chat also ticks the roadmap row** in `docs/roadmap.md`. After final gate only: optional Thermos / `simplify-ai-slop` — plan **After final gate** (human-only). Full template: `plan-then-implement` skill.
+**Phased work:** `@docs/roadmap.md` (if present) for order → `.cursor/plans/*_detailed.plan.md` → **First messages**. Set picker from **Model (do not paste)**; paste the fenced block from the plan. **Load `plan-then-implement` skill** for Closeout, todos, roadmap tick, and reviews — do not restate that procedure here.
 
 Ultra hygiene: Composer Fast for implement; Cursor Models pool default; new chat after compaction. Cost mode (opt-in): paste `deepseek-worker-prompt.md` — do not treat that as the daily default.
 

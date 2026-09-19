@@ -38,7 +38,7 @@ You → Cursor (orchestrator: tools, files, MCPs, verify)
 | Prose / review taste | Claude or GPT **on purpose** | Other Models | Not for bulk implement |
 | Research (Mobbin, web) | **Cursor + MCP** | Cursor Models | Never DeepSeek — no MCP access |
 
-**Do not put model names in product `AGENTS.md`.** Model choice lives here + the approved plan. Detailed plans must include a **Model (human only)** bullet list per implement chat **above** the paste fence (picker labels: Mode, Pool, Model, Fast, Effort, DeepSeek) — set the picker from it; do not paste Model into the chat. Template: [`skills/plan-then-implement/SKILL.md`](skills/plan-then-implement/SKILL.md) → Detailed plans — First messages + Model.
+**Do not put model names in product `AGENTS.md`.** Model choice lives here + the task plan's **Model (do not paste)** bullets. Closeout, todos, and roadmap tick: [`skills/plan-then-implement/SKILL.md`](skills/plan-then-implement/SKILL.md) — not here, not in User Rules.
 
 ---
 

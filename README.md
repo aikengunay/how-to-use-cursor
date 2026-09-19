@@ -111,10 +111,10 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 
 ## 4. Day to day
 
-- **Start a task** — [`user-rules.md`](user-rules.md) → First message template. Phased work: set picker from **Model (do not paste)**, paste Goal/Files/Verify/**Closeout**/Out of scope; agent marks slice todos done before stopping. After final gate: optional Thermos — plan **After final gate** section.
+- **Start a task** — [`user-rules.md`](user-rules.md) → First message template (one-off vs phased pointer). Phased implement procedure: [`skills/plan-then-implement/SKILL.md`](skills/plan-then-implement/SKILL.md) only — Closeout, todos, roadmap tick, After final gate.
 - **New Agent chat per task.**
 - **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
-- **Models:** [`model-routing.md`](model-routing.md) — when Composer vs DeepSeek vs Grok vs Claude; role first (Plan → thinking; implement → **Composer Fast on**; stuck → **Grok High Fast off**). Per-slice overrides live in the plan’s **Model (do not paste)** bullets — not in product `AGENTS.md`. Bulk implement (cost mode, opt-in) → paste [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Toggles + pools → `user-rules.md` → Model picker. Detailed-plan template: [`skills/plan-then-implement/SKILL.md`](skills/plan-then-implement/SKILL.md).
+- **Models:** [`model-routing.md`](model-routing.md) — Composer vs DeepSeek vs Grok vs Claude. Per-slice picker: task plan **Model (do not paste)** bullets. Bulk implement (cost mode): [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Toggles + pools: `user-rules.md` → Model picker.
 - **Grill** vague features (`grill-requirements`). **Architecture** for “where does this live?”
 - **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`).
 - **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).

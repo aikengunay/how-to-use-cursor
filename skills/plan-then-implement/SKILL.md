@@ -46,7 +46,9 @@ The plan must be specific enough that a faster model cannot invent a new archite
 
 ### Detailed plans — First messages + Model
 
-Medium or large work that splits into implement chats (Phase 1 Chat A…E style) should end the `.cursor/plans/*_detailed.plan.md` with **First messages** — one section per chat. Do **not** put model names in product `AGENTS.md`. Slice overrides live in the plan.
+**Authority for phased implement.** User Rules and README point here — do not duplicate Closeout, roadmap tick, or After final gate prose in `AGENTS.md` or User Rules.
+
+Medium or large work that splits into implement chats (Phase 1 Chat A…E style) should end the `.cursor/plans/*_detailed.plan.md` with **First messages** — one section per chat. Phase order: `docs/roadmap.md` when the repo has it. Do **not** put model names in product `AGENTS.md`. Slice overrides live in the plan.
 
 **Two parts per chat — do not merge:**
 
