@@ -122,6 +122,8 @@ Named skills in this OS: `grill-requirements`, `codebase-architecture`, `simplif
 
 External GitHub repos → open a dedicated chat with the kit's `adopt-external-repo-prompt.md` before any install.
 
+**UI look:** Mobbin (or a gallery bookmark) → lock the brief in the product plan → Composer implements shell/CSS. Do not send visual/CSS work to DeepSeek without that brief. Details: kit `design-with-agents.md`. Do not install oil-ui and superdesign-skill together; neither is a default OS skill.
+
 **Prose vs code slop:** `no-ai-slop` is for human-facing writing after you draft; `simplify-ai-slop` is for generated code bloat. Do not swap them.
 
 **Mobile QA:** browser MCP for web. Repeatable mobile flows live in that product repo's Maestro YAML — not global skills.

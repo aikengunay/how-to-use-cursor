@@ -113,6 +113,8 @@ Separate chats by phase — do not merge research + codegen:
 
 **Rule:** Research outputs **bullets + URLs** into the build chat — not Mobbin images or full metadata dumps.
 
+**Visual work:** Mobbin and gallery research stay in Cursor. Shell, landing, login, and token CSS go to Composer from a written brief (grid, type, do-not list). Do not send that job to DeepSeek — it cannot see screenshots. Optional design skills (one of oil-ui or superdesign-skill, not both, not default): [`design-with-agents.md`](design-with-agents.md).
+
 ---
 
 ## Cost honesty (homepage test reference)

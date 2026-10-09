@@ -119,7 +119,7 @@ Layer 1 already applies when you open the repo. You do **not** install Thermos o
 - **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`).
 - **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).
 - **Thermos** only on merge-ready / PR / “review this branch.” One review tool per review chat (do not also fire Bugbot unless you want a second pass).
-- **UI** — click the flow. One screenshot is not done.
+- **UI** — click the flow. One screenshot is not done. Look: [`design-with-agents.md`](design-with-agents.md) (Mobbin + tokens; galleries in [`design-references.md`](design-references.md)). Shell and CSS stay on Composer unless the plan already lists grid, type, and what not to copy. DeepSeek does not see Mobbin.
 
 ### Adopt an external repo
 
@@ -148,3 +148,5 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 | [`project-stub/AGENTS.md`](project-stub/AGENTS.md) | Thin identity file for a new repo |
 | [`existing-project-prompt.md`](existing-project-prompt.md) | Paste into an existing app's Agent chat |
 | [`adopt-external-repo-prompt.md`](adopt-external-repo-prompt.md) | Paste when evaluating a GitHub repo or skill pack |
+| [`design-with-agents.md`](design-with-agents.md) | Mobbin, tokens, who implements look, optional oil-ui or superdesign-skill |
+| [`design-references.md`](design-references.md) | Gallery and tool bookmarks — not skills |
