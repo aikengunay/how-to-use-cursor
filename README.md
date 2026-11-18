@@ -2,12 +2,14 @@
 
 This folder is the source of truth for a small **Cursor operating system**: how the agent should work on every project. It is not a giant project dump and it does not replace product-specific rules already in a real app.
 
-Live install (this machine — already done if you followed the steps):
+## Onboarding (new machine)
 
-- **User Rules** — paste [`user-rules.md`](user-rules.md) once in Cursor Settings
-- **Personal skills** — six OS skills in `~/.cursor/skills/`
-- **Thermos plugin** — Cursor marketplace, on-review only
-- **Project stub** — [`project-stub/AGENTS.md`](project-stub/AGENTS.md) only when a repo has no identity file
+1. **Clone** this repo.
+2. **User Rules** — paste [`user-rules.md`](user-rules.md) once in Cursor Settings → Rules → User Rules (append to your existing git/PR rules).
+3. **Skills** — `chmod +x install-global.sh && ./install-global.sh`. Add `--design` if you build UI (installs color and type skills).
+4. **Thermos** — install from the Cursor marketplace (on-review only).
+5. **Optional:** [Mobbin MCP](design-with-agents.md), [DeepSeek worker](deepseek-worker-setup.md).
+6. **Named products** — if you work on repos listed in [`products.md`](products.md), read that file for delivery lens, existing-repo guardrails, and worker defaults.
 
 ```
 Layer 1  You            User Rules + personal skills + Thermos plugin   every project
@@ -27,17 +29,11 @@ Three layers — do not mix them:
 | Client prose | `no-ai-slop` | After **you** wrote a rough draft |
 | Generated code | `simplify-ai-slop` | After a big Agent generation |
 
-Workflow for client-facing text: human outline first → `/no-ai-slop` → you manually polish the last pass. Do not run `no-ai-slop` on `.cursor/rules`, code comments, or finance/calendar domain rules.
+Workflow for client-facing text: human outline first → `/no-ai-slop` → you manually polish the last pass. Do not run `no-ai-slop` on `.cursor/rules`, code comments, or narrow domain rules in personal tooling repos — see [`products.md`](products.md).
 
 ### Client delivery lens
 
-Shadow before automate, ship the smallest slice, wrap what builds trust:
-
-- **Shadow:** Observe one real user path (admin captive login, teacher portal, chat join) before automating.
-- **Minimum useful:** Smallest shippable slice — one flow, one school pilot.
-- **Wrapper:** What creates client trust — runbooks, offline fallback, logs, export, plain-language docs (`no-ai-slop` for client-facing text).
-- **Where it lives:** Wrapper docs and Maestro flows in **product** `AGENTS.md` / `docs/`, not this kit.
-- **External worker:** default **no** on personal finance, calendar, and client product repos. Composer only unless the human enables DeepSeek.
+Shadow before automate, ship the smallest slice, wrap what builds trust. Full wording and worker defaults for client repos: [`products.md`](products.md).
 
 ### Mobile QA (product repos, not this kit)
 
@@ -46,7 +42,7 @@ Repeatable mobile checks belong in **each app repo** — not in this OS kit.
 | Layer | Tool | Where |
 |---|---|---|
 | Web UI on desktop | Browser MCP | Agent chat |
-| Mobile regression (repeat before ship) | [Maestro](https://maestro.mobile.dev/) CLI (free, local) | `maestro/flows/` in the product repo |
+| Mobile regression (repeat before ship) | [Maestro](https://maestro.mobile.dev/) CLI (free, local) | `maestro/flows/` in that product repo |
 | How to run | `AGENTS.md` → verify section | That product repo |
 
 Do not add Maestro flows here. When a repo gains mobile users, add flows there and document the command in its `AGENTS.md`.
@@ -64,13 +60,13 @@ chmod +x install-global.sh
 ./install-global.sh
 ```
 
-Copies `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`, and `deepseek-worker`. Cloudflare skills stay.
+Copies `grill-requirements`, `codebase-architecture`, `simplify-ai-slop`, `plan-then-implement`, `no-ai-slop`, and `deepseek-worker`. Cloudflare skills stay. Use `./install-global.sh --design` to also install `color-system-hsb` and `type-system`.
 
 After updating a vendored skill from upstream, run `./install-external-skills.sh` — SkillSpector scan, then re-copy via `install-global.sh`.
 
 ### Optional: DeepSeek worker
 
-Cost mode, **opt-in per task**. Fresh machine or this Mac: [`deepseek-worker-setup.md`](deepseek-worker-setup.md). Daily prompt: [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md).
+Cost mode, **opt-in per task**. Fresh machine: [`deepseek-worker-setup.md`](deepseek-worker-setup.md). Daily prompt: [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Default-off repos: [`products.md`](products.md).
 
 ### Thermos
 
@@ -82,10 +78,10 @@ Change a skill here, then re-run `./install-global.sh`. Change User Rules here, 
 
 ## 2. New project
 
-1. Copy [`project-stub/AGENTS.md`](project-stub/AGENTS.md) to the repo root.
+1. Copy [`project-stub/AGENTS.md`](project-stub/AGENTS.md) to the repo root. If the app has UI, copy [`project-stub/DESIGN.md`](project-stub/DESIGN.md) too.
 2. Fill every `TODO`. Delete sections that do not apply. Keep it short.
-3. Add 2–5 **product** rules only if this app has locks the agent always gets wrong (example: video playback on iOS). Do not copy another product’s full rule folder into a new app.
-4. New Agent chat. Point at `AGENTS.md`.
+3. Add 2–5 **product** rules only if this app has locks the agent always gets wrong (streaming/HLS, chat chrome, portal split, etc.). Do not copy another product’s full rule folder into a new app.
+4. New Agent chat. Point at `AGENTS.md` (and `DESIGN.md` when relevant).
 
 Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the six skills or Thermos into the project.
 
@@ -93,19 +89,9 @@ Do not copy this `how-to-use-cursor` folder into the new repo. Do not copy the s
 
 Layer 1 already applies when you open the repo. You do **not** install Thermos or skills again there.
 
-**Do not revise** a working `.cursor/rules` set to “make room” for this OS. They stack:
+**Do not revise** a working `.cursor/rules` set to “make room” for this OS. Product locks stay; global OS rules stack on top.
 
-| Layer | Who owns it | Example |
-|---|---|---|
-| Global User Rules + 6 skills + Thermos | This kit / this machine | Verify, plan vs implement, review, prose/code slop, optional DeepSeek worker |
-| Repo rules / `.cursorrules` | That product | Chat UI, video playback, portal split |
-| `AGENTS.md` | Optional index | How to run, how to verify, 5 stack facts |
-
-**Skip filling a stub when identity already exists and is enough:**
-
-- Personal domain repos (finance, calendar) — leave their rules.
-- A product that already has `.cursor/rules` — optional: add a short `AGENTS.md` that **points at** README + `.cursor/rules/README.md`. Do not duplicate those handbooks.
-- A product that already has `.cursorrules` — optional: add `AGENTS.md` for run/verify; **keep** the existing `.cursorrules`.
+Repos that already have handbooks, optional `AGENTS.md` patterns, and per-product examples: [`products.md`](products.md) → **Existing repos**.
 
 **How to tell Cursor in that repo:** open a **new** Agent chat there and paste [`existing-project-prompt.md`](existing-project-prompt.md). Do not ask it to install plugins or copy this kit.
 
@@ -130,7 +116,7 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 - Community skill packs (scan with [SkillSpector](https://github.com/NVIDIA/SkillSpector) first if you must try one)
 - Always-on Plan mode, Thermos, subagents, or loops
 - This kit copied into product repos
-- Rewriting a product’s rules to match the stub
+- Rewriting a product’s mature rules to match the stub — see [`products.md`](products.md)
 
 ## Files
 
@@ -138,7 +124,9 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 |---|---|
 | [`user-rules.md`](user-rules.md) | Paste into Cursor User Rules |
 | [`model-routing.md`](model-routing.md) | When to use Composer vs DeepSeek vs Grok vs Other models |
+| [`products.md`](products.md) | Named repos: client lens, existing-repo list, DeepSeek default-off |
 | [`skills/`](skills/) | Source for the six OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
+| [`design-skills/`](design-skills/) | Opt-in color and type skills (`--design` on install) |
 | [`deepseek-worker-setup.md`](deepseek-worker-setup.md) | Fresh-machine + MCP setup for optional DeepSeek worker |
 | [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) | Cost-mode start prompt + session cost report |
 | [`deepseek-mcp-server/`](deepseek-mcp-server/) | MCP server source (`install.sh` → `~/.cursor/deepseek-mcp-server`) |
@@ -146,6 +134,7 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 | [`install-global.sh`](install-global.sh) | Copies OS skills to `~/.cursor/skills/` |
 | [`install-external-skills.sh`](install-external-skills.sh) | SkillSpector scan + re-run `install-global.sh` |
 | [`project-stub/AGENTS.md`](project-stub/AGENTS.md) | Thin identity file for a new repo |
+| [`project-stub/DESIGN.md`](project-stub/DESIGN.md) | Visual lock stub for new UI products |
 | [`existing-project-prompt.md`](existing-project-prompt.md) | Paste into an existing app's Agent chat |
 | [`adopt-external-repo-prompt.md`](adopt-external-repo-prompt.md) | Paste when evaluating a GitHub repo or skill pack |
 | [`design-with-agents.md`](design-with-agents.md) | Mobbin, tokens, who implements look, optional oil-ui or superdesign-skill |

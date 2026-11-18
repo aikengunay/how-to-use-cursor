@@ -21,7 +21,7 @@ Setup: [`deepseek-worker-setup.md`](../../deepseek-worker-setup.md). Prompts and
 ## When to skip
 
 - Typos, renames, ≤10-line edits
-- personal finance, calendar, and client product repos unless AGENTS.md says yes or the human asks
+- Repos your org marks default-off (kit `products.md`) unless that repo’s `AGENTS.md` says yes or the human asks
 - Secrets in context (`.env`, keys, credentials)
 
 ## Chat visibility

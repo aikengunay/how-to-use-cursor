@@ -17,7 +17,7 @@ TODO: install and start commands
 - TODO: test / typecheck / lint command
 - TODO: the one user flow that must still work
 - TODO (if mobile matters): Maestro flow path and command, e.g. `maestro test maestro/flows/`
-- TODO (if UI matters): click path + `@` product design rules if `.cursor/rules` exist
+- TODO (if UI matters): click path; fill `DESIGN.md` and `@` product design rules if `.cursor/rules` exist
 
 ## Stack facts
 
@@ -43,4 +43,4 @@ Client runbooks and deploy docs live in `docs/` or README — not in the OS kit.
 
 - DeepSeek MCP worker: TODO no (default) | yes
 - If no: Composer only; do not call `deepseek_code`
-- If yes: bulk codegen via `deepseek-worker`; no secrets in worker context. Default no on finance, calendar, and client repos.
+- If yes: bulk codegen via `deepseek-worker`; no secrets in worker context. Default no unless this repo’s `AGENTS.md` or your org’s `products.md` says otherwise.

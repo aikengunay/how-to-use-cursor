@@ -21,11 +21,16 @@ ensure_skillspector() {
 
 ensure_skillspector
 
-for skill_dir in "${ROOT}"/skills/*/; do
+for skill_dir in "${ROOT}"/skills/*/ "${ROOT}"/design-skills/*/; do
   if [[ -f "${skill_dir}/SKILL.md" ]]; then
     echo "Scanning ${skill_dir}..." >&2
     "${SCAN_VENV}/bin/skillspector" scan "${skill_dir}" --no-llm
   fi
 done
 
-"${ROOT}/install-global.sh"
+DESIGN_ARGS=()
+if [[ -d "${ROOT}/design-skills" ]] && compgen -G "${ROOT}/design-skills/*/SKILL.md" >/dev/null; then
+  DESIGN_ARGS=(--design)
+fi
+
+"${ROOT}/install-global.sh" "${DESIGN_ARGS[@]}"

@@ -2,7 +2,7 @@
 
 Optional. Cursor orchestrates; DeepSeek MCP generates bulk code. Default implement stays Composer.
 
-Do **not** enable this on personal finance, calendar, or client product repos unless the human says so. Never send `.env` or secrets in worker context.
+Do **not** enable this on repos listed under default-off in your kit’s [`products.md`](products.md) unless the human says so. Never send `.env` or secrets in worker context.
 
 ## Fresh machine (from this kit)
 

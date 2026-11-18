@@ -10,7 +10,8 @@ Bookmarks: [`design-references.md`](design-references.md). Models: [`model-routi
 | --- | --- | --- |
 | **Shipped UI** | Mobbin MCP (web, low limits). Record app name + what to copy + `mobbin_url`. No `image_url` in plans (links expire). | Inventing a new palette from a reel |
 | **One section** | Galleries in `design-references.md` (hero, nav, CTA, footer, pricing) | “Install this site” — they are not npm packages |
-| **Color lock** | Personal skill `color-system-hsb` (HSB primitives → semantic aliases). Write the choice in that product’s plan or `decisions.md` | Pasting a Realtime Colors URL as the system |
+| **Color lock** | Kit skill `color-system-hsb` (install with `./install-global.sh --design`). HSB primitives → semantic aliases. Write the choice in the product’s `DESIGN.md` or `decisions.md` | Pasting a Realtime Colors URL as the system |
+| **Type lock** | Kit skill `type-system` (same install flag). Scale, line height, breakpoints → tokens in `DESIGN.md` | One-off px sizes per screen with no shared scale |
 | **Agent design process** | **One** optional skill, after SkillSpector: [oil-ui](https://github.com/oil-oil/oil-ui) **or** [superdesign-skill](https://github.com/superdesigndev/superdesign-skill). Not both. Not a default OS skill | Replacing Mobbin or rewriting a locked UI section mid-phase |
 | **Motion** | [motion-primitives](https://github.com/ibelick/motion-primitives) after layout is decided | Admin dashboards, loading the page with animation |
 | **Decoration** | [Haikei](https://haikei.app/) — at most one quiet shape on a marketing page | Default blob heroes |

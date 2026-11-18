@@ -1,6 +1,6 @@
 # Prompt for an existing project
 
-Paste this into a **new** Agent chat **in that repo**. Skip personal finance and calendar repos unless the human explicitly asks.
+Paste this into a **new** Agent chat **in that repo**. Skip personal domain tooling repos unless the human explicitly asks — see your kit’s `products.md` for examples.
 
 ---
 
