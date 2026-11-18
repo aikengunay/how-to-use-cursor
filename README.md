@@ -6,7 +6,7 @@ This folder is the source of truth for a small **Cursor operating system**: how 
 
 1. **Clone** this repo.
 2. **User Rules** — paste [`user-rules.md`](user-rules.md) once in Cursor Settings → Rules → User Rules (append to your existing git/PR rules).
-3. **Skills** — `chmod +x install-global.sh && ./install-global.sh`. Add `--design` if you build UI (installs color and type skills).
+3. **Skills** — `chmod +x install-global.sh && ./install-global.sh`. Add `--design` for color/type skills; add `--personal` for `ui-anti-slop` (UI anti-template tells).
 4. **Thermos** — install from the Cursor marketplace (on-review only).
 5. **Optional:** [Mobbin MCP](design-with-agents.md), [DeepSeek worker](deepseek-worker-setup.md).
 6. **Named products** — if you work on repos listed in [`products.md`](products.md), read that file for delivery lens, existing-repo guardrails, and worker defaults.
@@ -19,17 +19,19 @@ Layer 3  On demand      named skills, Plan mode, Thermos, deepseek-worker   this
 
 Nothing else to install for the default OS. Optional DeepSeek worker is extra — see below. Do not add Pocock, shadcn/improve, or a skills.sh bundle. **Scan** any other GitHub skill with [SkillSpector](https://github.com/NVIDIA/SkillSpector) before installing.
 
-### Prose slop vs code slop
+### Slop: three skills, three jobs
 
-Three layers — do not mix them:
+Do not mix them — each has its own slash command:
 
-| Layer | Tool | Where |
+| Job | Skill | When |
 |---|---|---|
-| UI look/behavior | Product `.cursor/rules` (e.g. chat-ui-identity) | `@` rules on UI tasks |
-| Client prose | `no-ai-slop` | After **you** wrote a rough draft |
-| Generated code | `simplify-ai-slop` | After a big Agent generation |
+| **UI** look (web/mobile) | `ui-anti-slop` (`/ui-anti-slop`) | Building, reviewing, or fixing generated UI; see `TELLS.md` in the skill. Optional: `./install-global.sh --personal` |
+| **Client prose** | `no-ai-slop` (`/no-ai-slop`) | After **you** wrote a rough draft |
+| **Generated code** | `simplify-ai-slop` | After a big Agent code generation |
 
-Workflow for client-facing text: human outline first → `/no-ai-slop` → you manually polish the last pass. Do not run `no-ai-slop` on `.cursor/rules`, code comments, or narrow domain rules in personal tooling repos — see [`products.md`](products.md).
+Product UI locks still live in `.cursor/rules` and `DESIGN.md` — `@` those on UI tasks.
+
+Workflow for client-facing text: human outline first → `/no-ai-slop` → you manually polish the last pass. Do not run `no-ai-slop` on `.cursor/rules`, code comments, or narrow domain rules in personal tooling repos — see [`products.md`](products.md). Do not use `no-ai-slop` for layout/CSS; use `/ui-anti-slop` instead.
 
 ### Client delivery lens
 
@@ -102,7 +104,7 @@ Repos that already have handbooks, optional `AGENTS.md` patterns, and per-produc
 - **Plan mode** for medium or large work. Skip it for typos, renames, and small CSS.
 - **Models:** [`model-routing.md`](model-routing.md) — Composer vs DeepSeek vs Grok vs Claude. Per-slice picker: task plan **Model (do not paste)** bullets. Bulk implement (cost mode): [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md). Toggles + pools: `user-rules.md` → Model picker.
 - **Grill** vague features (`grill-requirements`). **Architecture** for “where does this live?”
-- **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`).
+- **Simplify code** after a big generation (`simplify-ai-slop`). **Clean prose** after you draft client copy (`no-ai-slop`). **UI pass** — attach `/ui-anti-slop` when implementing or reviewing screens.
 - **Mobile QA** — browser MCP for web; Maestro flows in the product repo before ship (see above).
 - **Thermos** only on merge-ready / PR / “review this branch.” One review tool per review chat (do not also fire Bugbot unless you want a second pass).
 - **UI** — click the flow. One screenshot is not done. Look: [`design-with-agents.md`](design-with-agents.md) (Mobbin + tokens; galleries in [`design-references.md`](design-references.md)). Shell and CSS stay on Composer unless the plan already lists grid, type, and what not to copy. DeepSeek does not see Mobbin.
@@ -127,6 +129,7 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 | [`products.md`](products.md) | Named repos: client lens, existing-repo list, DeepSeek default-off |
 | [`skills/`](skills/) | Source for the six OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
 | [`design-skills/`](design-skills/) | Opt-in color and type skills (`--design` on install) |
+| [`personal-skills/`](personal-skills/) | Opt-in `ui-anti-slop` (`--personal` on install) |
 | [`deepseek-worker-setup.md`](deepseek-worker-setup.md) | Fresh-machine + MCP setup for optional DeepSeek worker |
 | [`deepseek-worker-prompt.md`](deepseek-worker-prompt.md) | Cost-mode start prompt + session cost report |
 | [`deepseek-mcp-server/`](deepseek-mcp-server/) | MCP server source (`install.sh` → `~/.cursor/deepseek-mcp-server`) |

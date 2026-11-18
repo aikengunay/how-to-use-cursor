@@ -17,6 +17,7 @@ Bookmarks: [`design-references.md`](design-references.md). Models: [`model-routi
 | **Decoration** | [Haikei](https://haikei.app/) — at most one quiet shape on a marketing page | Default blob heroes |
 | **Icons** | Lucide in the app, or [better-icons](https://github.com/better-auth/better-icons) MCP if you already installed it | Treating an icon pack as a design system |
 | **Copy** | `no-ai-slop` after you draft | Code, CSS, `.cursor/rules` |
+| **UI template tells** | `ui-anti-slop` when building or reviewing screens (`./install-global.sh --personal`) | Client prose (`no-ai-slop`) |
 | **Generated bloat** | `simplify-ai-slop` after a big generation | Taste decisions |
 
 Apple [Human Interface Guidelines](https://developer.apple.com/design/human-interface-guidelines/) are for native Apple UI. Web admin and marketing sites follow Mobbin + the product tokens. Do not add an “Apple design skill” unless the product is iOS or macOS, and then the source is Apple’s docs, not a social-media summary.
