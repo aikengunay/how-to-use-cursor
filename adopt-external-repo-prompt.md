@@ -18,7 +18,7 @@ You are helping decide whether to adopt an external GitHub repo into this machin
 **Placement — pick exactly one**
 
 4. **Vendored skill in kit** (rare) — only if it belongs in `how-to-use-cursor/skills/` and passes SkillSpector.
-5. **Code in target product repo** — the repo that owns the workflow (see your kit’s `products.md` if you share named examples).
+5. **Code in target product repo** — the repo that owns the workflow (see your kit’s `products.md` for how product repos relate to this kit).
 6. **Manual only — do not install** — reference docs or copy patterns by hand; no global or repo install.
 
 **Minimum useful**

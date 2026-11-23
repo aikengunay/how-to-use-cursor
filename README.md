@@ -9,7 +9,7 @@ This folder is the source of truth for a small **Cursor operating system**: how 
 3. **Skills** — `chmod +x install-global.sh && ./install-global.sh`. Add `--design` for color/type skills; add `--personal` for `ui-anti-slop` (UI anti-template tells).
 4. **Thermos** — install from the Cursor marketplace (on-review only).
 5. **Optional:** [Mobbin MCP](design-with-agents.md), [DeepSeek worker](deepseek-worker-setup.md).
-6. **Named products** — if you work on repos listed in [`products.md`](products.md), read that file for delivery lens, existing-repo guardrails, and worker defaults.
+6. **Product repos** — read [`products.md`](products.md) for the delivery lens, existing-repo guardrails, and worker defaults.
 
 ```
 Layer 1  You            User Rules + personal skills + Thermos plugin   every project
@@ -126,7 +126,7 @@ Found a GitHub repo or skill pack? Open a **new** Agent chat and paste [`adopt-e
 |---|---|
 | [`user-rules.md`](user-rules.md) | Paste into Cursor User Rules |
 | [`model-routing.md`](model-routing.md) | When to use Composer vs DeepSeek vs Grok vs Other models |
-| [`products.md`](products.md) | Named repos: client lens, existing-repo list, DeepSeek default-off |
+| [`products.md`](products.md) | Client lens, existing-repo guardrails, DeepSeek default-off |
 | [`skills/`](skills/) | Source for the six OS skills (`no-ai-slop` vendored from [petergyang/no-ai-slop](https://github.com/petergyang/no-ai-slop)) |
 | [`design-skills/`](design-skills/) | Opt-in color and type skills (`--design` on install) |
 | [`personal-skills/`](personal-skills/) | Opt-in `ui-anti-slop` (`--personal` on install) |

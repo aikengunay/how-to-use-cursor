@@ -1,13 +1,13 @@
-# Products this kit was shaped around
+# Product repos this kit sits beside
 
-Recipients who work on these repos keep the names here. Every other file in the kit stays generic. Do not paste this file into product repos unless it helps onboarding.
+Keep product names in each product repo. This file stays generic. Do not paste it into a product repo unless it helps onboarding.
 
 ## Client delivery lens
 
 Shadow before automate, ship the smallest slice, wrap what builds trust:
 
-- **Shadow:** Observe one real user path (admin captive login, teacher portal, chat join) before automating.
-- **Minimum useful:** Smallest shippable slice — one flow, one school pilot.
+- **Shadow:** Observe one real user path before automating.
+- **Minimum useful:** Smallest shippable slice — one flow, one pilot.
 - **Wrapper:** What creates client trust — runbooks, offline fallback, logs, export, plain-language docs (`no-ai-slop` for client-facing text).
 - **Where it lives:** Wrapper docs and Maestro flows in **product** `AGENTS.md` / `docs/`, not this kit.
 - **External worker:** default **no** on personal finance, calendar, and client product repos. Composer only unless the human enables DeepSeek.
@@ -36,17 +36,17 @@ Layer 1 (User Rules, personal skills, Thermos) already applies when you open the
 
 Do **not** enable the DeepSeek MCP worker on these unless the human explicitly says so:
 
-- `finance/`
+- Personal finance repos
 - Personal calendar repos
 - Client product repos (portal, chat, inventory, streaming, and the like)
 
 Never send `.env` or secrets in worker context. Per-repo override belongs in that repo’s `AGENTS.md`.
 
-## Kit housekeeping (product-specific)
+## Kit housekeeping
 
 - **Prose slop:** Do not run `no-ai-slop` on `.cursor/rules`, code comments, or finance/calendar domain rules — only client-facing drafts you wrote.
 - **Mobile QA:** Maestro flows live in product repos under `maestro/flows/`, not in this kit.
-- **New project examples:** Product rules might cover HLS/iOS, chat UI identity, portal split — copy only what fits the new app; do not paste another product’s full rule folder.
+- **New project examples:** Product rules might cover video playback, chat UI, or a portal split — copy only what fits the new app; do not paste another product’s full rule folder.
 - **Do not:** Rewrite an existing product’s rules to match the kit stub.
 
 ## Adopt external repo — fit examples
